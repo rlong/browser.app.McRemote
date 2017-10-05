@@ -1,0 +1,14 @@
+{
+  "name": "VlcControl",
+  "app_id": "",
+  "type": "ionic-angular",
+  "integrations": {
+    "cordova": {}
+  },
+  "proxies": [
+    {
+      "path": "/services",
+      "proxyUrl": "http://127.0.0.1:21318/services"
+    }
+  ]
+}
