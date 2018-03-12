@@ -76,11 +76,14 @@ export class BrokerMessage {
 
 export class RequestBuilder {
 
+  public metaData = {};
+
   constructor( private serviceName: string ) {}
 
   build( methodName: string ): BrokerMessage {
 
     let answer: BrokerMessage = new BrokerMessage();
+    answer.metaData = this.metaData;
     answer.serviceName = this.serviceName;
     answer.methodName = methodName;
     return answer;

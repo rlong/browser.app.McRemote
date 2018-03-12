@@ -10,6 +10,8 @@ class Proxy {
 
   dispatcher: RequestDispatcher;
   builder: RequestBuilder;
+  log: Log = new Log( this );
+
 
   constructor( dispatcher: RequestDispatcher ) {
 
@@ -23,7 +25,7 @@ class Proxy {
 
     return this.dispatcher.dispatch( request ).then(
       () => {
-        console.log( [this], 'ping' );
+        this.log.debug( 'ping');
       }
     );
   }
@@ -47,8 +49,7 @@ class Proxy {
     request.orderedParameters = [clipboardValue];
     return this.dispatcher.dispatch( request ).then(()=>{});
   }
-
-
+  
 }
 
 
@@ -73,6 +74,8 @@ export class ClipboardPage implements OnInit {
 
   proxy: Proxy;
   clipboardAsText: string;
+  log: Log = new Log( this );
+
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private http:Http) {
 
@@ -88,7 +91,7 @@ export class ClipboardPage implements OnInit {
 
   ionViewDidLoad() {
 
-    console.log( [this], 'ionViewDidLoad' );
+    this.log.debug( 'ionViewDidLoad' );
   }
 
   async pingOnClick()  {
@@ -110,7 +113,7 @@ export class ClipboardPage implements OnInit {
 
   ngOnInit(): void {
 
-    console.log( [this], 'ngOnInit' );
+    this.log.debug( 'ngOnInit' );
     this.copyButtonOnClick();
   }
 
